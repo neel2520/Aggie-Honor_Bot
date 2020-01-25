@@ -1,7 +1,12 @@
+const ACCESS_TOKEN = 'NyJMui4CjBxQy9gUKK2lgca227DWsztrc97yzwGv';
+var USER_ID = "81946993";
+
 const express = require('express');
 const cookieParser = require('cookie-parser');
 const app = express();
 let AUTH_ID = null;
+let groupmeapi = require("groupme").Stateless;
+
 app.set("view engine","pug");
 app.use(cookieParser());
 
@@ -24,6 +29,12 @@ app.get("/dashboard", (req, res) => {
     if(req.cookies.access_token == null) {
         res.redirect("/");
     }
+
+    res.render("id, name", {
+        id: res["id"],
+        name: res["name"]
+    })
+
     res.render("dashboard", {
         title: "Dashboard",
         name: req.cookies.access_token
