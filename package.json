@@ -6,7 +6,6 @@
   "dependencies": {
     "cookie-parser": "^1.4.4",
     "express": "^4.17.1",
-    "groupme": "^0.5.8",
     "pug": "^2.0.4",
     "pug-bootstrap": "0.0.16"
   },
