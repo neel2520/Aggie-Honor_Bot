@@ -1,0 +1,23 @@
+{
+  "name": "aggie-honor-bot",
+  "version": "1.0.0",
+  "description": "An anti-cheating groupme bot",
+  "main": "index.js",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TBolton2000/aggie-honor-bot.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TBolton2000/aggie-honor-bot/issues"
+  },
+  "homepage": "https://github.com/TBolton2000/aggie-honor-bot#readme"
+}
