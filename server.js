@@ -8,15 +8,10 @@ app.use(cookieParser());
 const AUTH_URL = "https://oauth.groupme.com/oauth/authorize?client_id=TEEuXmjuhBrBGqdnegjpNruVkG8LAUaqArVCmQrjSyBIwUWU";
 
 app.get("/", (req, res) => {
-    if(req.cookies.access_token != null){
-        res.redirect("/dashboard")
-    }
-    else{
-        res.render("index.pug", {
-            title: "Home Page",
-            url: AUTH_URL
-        })
-    }
+    res.render("index", {
+        title: "Home Page",
+        url: AUTH_URL
+    });
 });
 
 app.get("/auth", (req, res) => {
