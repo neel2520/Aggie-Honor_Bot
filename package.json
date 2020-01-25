@@ -4,6 +4,7 @@
   "description": "An anti-cheating groupme bot",
   "main": "index.js",
   "dependencies": {
+    "@google-cloud/storage": "^4.3.0",
     "cookie-parser": "^1.4.4",
     "express": "^4.17.1",
     "groupme": "^0.5.8",
