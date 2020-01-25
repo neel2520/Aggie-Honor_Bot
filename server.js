@@ -13,6 +13,9 @@ app.use(cookieParser());
 const AUTH_URL = "https://oauth.groupme.com/oauth/authorize?client_id=TEEuXmjuhBrBGqdnegjpNruVkG8LAUaqArVCmQrjSyBIwUWU";
 
 app.get("/", (req, res) => {
+    if(req.cookies.access_token != null){
+        res.redirect("/dashboard");
+    }
     res.render("index", {
         title: "Home Page",
         url: AUTH_URL
