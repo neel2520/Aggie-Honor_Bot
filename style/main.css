@@ -94,6 +94,9 @@ body {
   color: #fff;
   border-bottom-color: #fff;
 }
+.navbar-nav:hover {
+  color: dimgray;
+}
 
 @media (min-width: 768px) {
   .masthead-brand {
