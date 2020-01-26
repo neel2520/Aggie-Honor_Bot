@@ -1,13 +1,19 @@
-a(href="dashboard?group="+group_id)
+a
     .card.card-no-border.gedf-card()
         .card-body
             .container-fluid(style="padding: 3%;")
                 .row
                     .col-sm-2.col-sm-3.col-sm-4
                         img(width='45' style="border-radius: 50%" src=image_url alt='')
-                    .col-lg-7.col-md-6.col-md-5
+                    a.col-lg-7.col-md-6.col-md-5(href="dashboard?group="+group_id)
                         h5(style="color: black; text-align: left;")=group_name
                     .col-sm-3.col-sm-3.col-sm-3
-                        button(onclick="addbot("+group_id+");")
+                        button(id="addbot")
                             p(style="color: black; font-size: 8pt;") Add bot
-
+script.
+    document.getElementById("addbot").addEventListener('click', function (e) { 
+        console.log('addbot'); 
+        if (window.confirm('Do you want to continue?')){
+            console.log('it worked');
+        } 
+    });
