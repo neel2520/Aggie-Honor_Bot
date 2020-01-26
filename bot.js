@@ -1,6 +1,6 @@
 const ACCESS_TOKEN = 'NyJMui4CjBxQy9gUKK2lgca227DWsztrc97yzwGv';
 var USER_ID = "81946993";
-
+var spawn = require("child_process").spawn;
 var API = require('groupme').Stateless;
 var hotWords = ["the answer is", "multiple choice", "how was the test",
     "pictures of problems", "did you get",
@@ -15,13 +15,13 @@ API.Users.me(ACCESS_TOKEN, (err, ret) => {
     }
 });
 
-API.Messages.create(ACCESS_TOKEN, "57206086", { message: { text: "I'm watching you..." } }, (err, res) => {
-    if (err) {
-        console.log("Message Error!");
-    } else {
-        console.log("Reply Message Sent!");
-    }
-});
+// API.Messages.create(ACCESS_TOKEN, "57206086", { message: { text: "I'm watching you..." } }, (err, res) => {
+//     if (err) {
+//         console.log("Message Error!");
+//     } else {
+//         console.log("Reply Message Sent!");
+//     }
+// });
 
 var listener = new IStream(ACCESS_TOKEN, USER_ID);
 
@@ -38,16 +38,17 @@ listener.on("message", function (msg) {
     if (msg && msg.data && msg.data.subject && msg.data.subject.text && msg.data.subject.group_id) {
         dataToDB = { group_id: msg.data.subject.group_id, messageid: msg.data.subject.id, text: msg.data.subject.text };
         console.log("Message received:", dataToDB.text);
-        console.log(dataToDB);
         for (var i = 0; i < hotWords.length; i++) {
-            if ((dataToDB.text).search(hotWords[i]) == -1) {
+            console.log("Looping");
+            if ((dataToDB.text).search(hotWords[i]) > -1) {
+                console.log("found");
                 flagEval = true;
                 dumbass = msg.data.subject.user_id;
                 break;
             }
         }
         if(flagEval)
-            var process = spawn("python",["sendAllBut.py", dataToDB.group_id, dumbass]);
+            var process = spawn("python",["alertAllBut.py", dataToDB.group_id, dumbass, dataToDB.text]);
     }
 });
 

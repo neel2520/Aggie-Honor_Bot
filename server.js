@@ -78,6 +78,7 @@ app.get("/dashboard", (req, res) => {
                     console.log(messages);
                 });
             }
+            console.log(messages);
             res.render("dashboard", {
                 title: "Dashboard",
                 groups: groups,
