@@ -64,7 +64,7 @@ app.get("/dashboard", (req, res) => {
             }
             var messages = [];
             if(current_group !== null){
-                var process = spawn("python",["grabGroupMessages.py",current_group.id]);
+                var process = spawn("python",["grabGroupMessages.py",current_group.id, req.cookies.access_token]);
                 process.stdout.on("data", (data) => {
                     lines = data.toString().split("77777");
                     message = [];

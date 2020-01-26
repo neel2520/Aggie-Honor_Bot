@@ -1,7 +1,7 @@
 import sys
 
 from groupy import Client
-client = Client.from_token("NyJMui4CjBxQy9gUKK2lgca227DWsztrc97yzwGv")
+client = Client.from_token(sys.argv[2])
 
 groups = list(client.groups.list_all())
 
@@ -14,7 +14,7 @@ for group in groups:
         flag = True
 
 if(flag):
-    messages = list(groups[0].messages.list_all())
+    messages = list(myGroup.messages.list_all())
     for i in range(len(messages)):
         if i == len(messages)-1:
             print(str(messages[i].name) + '88888' + str(messages[i]),end="")
