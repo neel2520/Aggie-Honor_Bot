@@ -26,12 +26,12 @@ app.get("/auth", (req, res) => {
 })
 
 app.get("/about", (req, res) => {
-    res.render("about");
+    res.render("about", {});
 })
 
 app.get("/dashboard", (req, res) => {
     if(req.cookies.access_token == null) {
-        res.redirect("/");
+        res.redirect(AUTH_URL);
     }
     
     API.Groups.index(req.cookies.access_token, (err,ret) => {
