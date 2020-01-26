@@ -6,6 +6,12 @@ const cookieParser = require('cookie-parser');
 const app = express();
 let AUTH_ID = null;
 let API = require("groupme").Stateless;
+const people_list = [
+    { name: "Rebecca McFadden", pic: "https://avatars2.githubusercontent.com/u/43143866?s=460&v=4", linkedin: "https://www.linkedin.com/in/rebecca-m-601936135/", email: "rmcfadden@tamu.edu", github: "https://github.com/rebeccamcfadden" },
+    { name: "Trevor    Bolton", pic: "https://media-exp1.licdn.com/dms/image/C4E03AQEnnCJlx29TDQ/profile-displayphoto-shrink_200_200/0?e=1585785600&v=beta&t=Z7WRTqYhCjupjWdgV2tHxqLNb51vKbfi7s6Zx6pdyQg", linkedin: "https://www.linkedin.com/in/trevor-bolton-428158192/", email: "tbolton2000@aol.com", github: "https://github.com/TBolton2000github" },
+    { name: "Neel Porchareddy", pic: "https://media-exp1.licdn.com/dms/image/C4E03AQFt7YCFr7mMwg/profile-displayphoto-shrink_200_200/0?e=1585785600&v=beta&t=_wMWldCdAEJFv2LPwFZ89_0kCE8Dnv3XW-ryRWLZsmw", linkedin: "https://www.linkedin.com/in/neel-pochareddy-02a88518a/", email: "npochareddy6335@gmail.com", github: "https://github.com/neel2520" },
+    { name: "Albin (Kyle) Myscich", pic: "https://i.groupme.com/1316x1317.jpeg.dd249735c5c844c2a3363884aa96921a", linkedin: "https://www.linkedin.com/in/albin-myscich-a1b495b4/", email: "akmysisch@hotmail.com", github: "https://github.com/AMyscich" }
+];
 
 app.set("view engine","pug");
 app.use(cookieParser());
@@ -28,6 +34,13 @@ app.get("/auth", (req, res) => {
 app.get("/about", (req, res) => {
     res.render("about", {
         title: "About"
+    });
+})
+
+app.get("/contact", (req, res) => {
+    res.render("contact", {
+        title: "Contact Us",
+        people: people_list
     });
 })
 
