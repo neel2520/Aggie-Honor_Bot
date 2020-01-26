@@ -4,8 +4,9 @@ var USER_ID = "81946993";
 const express = require('express');
 const cookieParser = require('cookie-parser');
 const app = express();
+const API = require("groupme").Stateless;
 let AUTH_ID = null;
-let groupmeapi = require("groupme").Stateless;
+
 
 app.set("view engine","pug");
 app.use(cookieParser());
@@ -33,16 +34,18 @@ app.get("/dashboard", (req, res) => {
         res.redirect("/");
     }
 
-    res.render("id, name", {
-        id: res["id"],
-        name: res["name"]
-    })
-
-    res.render("dashboard", {
-        title: "Dashboard",
-        name: req.cookies.access_token
-    })
-})
+    API.Groups.index(req.cookies.access_token, (err,ret) => {
+        var groups = [];
+        for (group in ret) {
+            groups.push([group.id,group.name,group.image_url])
+        }
+        res.render("dashboard", {
+            title: "Dashboard",
+            name: req.cookies.access_token,
+            groups: groups
+        });
+    });
+});
 
 const server = app.listen(7000, () => {
     console.log(`Express running → PORT ${server.address().port}`);
