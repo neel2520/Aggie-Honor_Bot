@@ -31,7 +31,7 @@ app.get("/about", (req, res) => {
 
 app.get("/dashboard", (req, res) => {
     if(req.cookies.access_token == null) {
-        res.redirect("/");
+        res.redirect(AUTH_URL);
     }
     
     API.Groups.index(req.cookies.access_token, (err,ret) => {
