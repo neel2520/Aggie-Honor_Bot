@@ -36,9 +36,11 @@ app.get("/dashboard", (req, res) => {
 
     API.Groups.index(req.cookies.access_token, (err,ret) => {
         var groups = [];
-        for (group in ret) {
-            groups.push([group.id,group.name,group.image_url])
+        for (group of ret) {
+            console.log(group);
+            groups.push({"id": group.id,"name":group.name,"image":group.image_url});
         }
+        console.log(groups);
         res.render("dashboard", {
             title: "Dashboard",
             name: req.cookies.access_token,
