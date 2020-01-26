@@ -63,7 +63,7 @@ app.get("/dashboard", (req, res) => {
                 groups.push({"id": group.id,"name":group.name,"image":group.image_url});
             }
             var messages = [];
-            if(current_group){
+            if(current_group !== null){
                 var process = spawn("python",["grabGroupMessages.py",current_group.id]);
                 process.stdout.on("data", (data) => {
                     lines = data.toString().split("77777");
@@ -86,7 +86,7 @@ app.get("/dashboard", (req, res) => {
                 res.render("dashboard", {
                     title: "Dashboard",
                     groups: groups,
-                    messages: messages
+                    messages: []
                 });
             }
         }

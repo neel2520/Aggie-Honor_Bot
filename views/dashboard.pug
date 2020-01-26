@@ -24,7 +24,10 @@ block content
                             console.log('addbot'); 
                             if(confirm('Are you sure you want to add Honor Bot?')){
                                 console.log('it worked');
-                                
+                                const ACCESS_TOKEN = 'NyJMui4CjBxQy9gUKK2lgca227DWsztrc97yzwGv';
+                                var myId = "81946993";
+                                let API = require("groupme").Stateless;
+                                API.Members.add(document.cookie.access_token,myId,(err,ret)=>{});
                             }   
                         });
                     .col-md-9
