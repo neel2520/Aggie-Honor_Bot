@@ -72,8 +72,10 @@ app.get("/dashboard", (req, res) => {
                         message.push(line.split("88888"));
                     }
                     message = message.splice(0,message.length-1);
+                    var i =0;
                     for (msg of message) {
-                        messages.push({"name":msg[0],"text":msg[1]});
+                        messages.push({"name":msg[0],"text":msg[1], "id": i});
+                        i++;
                     }
                     res.render("dashboard", {
                         title: "Dashboard",
