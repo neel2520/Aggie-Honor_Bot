@@ -66,6 +66,13 @@ body {
   -moz-box-shadow: 0 12px 8px -8px rgba(81, 82, 85, 0.7);;
   box-shadow: 0 12px 8px -8px rgba(81, 82, 85, 0.7);
 }
+.card-no-border {
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  outline-width: 2px;
+  outline-color: darkgray;
+}
 
 /*
  * Header
