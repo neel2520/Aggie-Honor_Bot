@@ -26,7 +26,9 @@ app.get("/auth", (req, res) => {
 })
 
 app.get("/about", (req, res) => {
-    res.render("about", {});
+    res.render("about", {
+        title: "About"
+    });
 })
 
 app.get("/dashboard", (req, res) => {
