@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-<<<<<<< Updated upstream
 const ACCESS_TOKEN = 'NyJMui4CjBxQy9gUKK2lgca227DWsztrc97yzwGv';
 var USER_ID = "81946993";
 
@@ -78,7 +76,7 @@ app.get("/dashboard", (req, res) => {
 
 const server = app.listen(7000, () => { 
     console.log(`Express running → PORT ${server.address().port}`);
-=======
+
 const express = require('express');
 const cookieParser = require('cookie-parser');
 const app = express();
