@@ -30,11 +30,15 @@ body {
   background-color: #500000;
 }
 body {
-  color: #fff;
+  color: black;
+  font-family: 'Titillium Web', sans-serif;
   text-align: center;
-  text-shadow: 0 1px 3px rgba(0,0,0,.5);
 }
 
+.cover {
+  color: #fff;
+  text-shadow: 0 1px 3px rgba(0,0,0,.5);
+}
 /* Extra markup and styles for table-esque vertical and horizontal centering */
 .site-wrapper {
   display: table;
@@ -57,7 +61,11 @@ body {
 .inner {
   padding: 30px;
 }
-
+.card {
+  -webkit-box-shadow: 0 12px 8px -8px rgba(81, 82, 85, 0.7);;
+  -moz-box-shadow: 0 12px 8px -8px rgba(81, 82, 85, 0.7);;
+  box-shadow: 0 12px 8px -8px rgba(81, 82, 85, 0.7);
+}
 
 /*
  * Header
@@ -118,6 +126,11 @@ body {
 .cover .btn-lg {
   padding: 10px 20px;
   font-weight: bold;
+}
+.backdrop {
+  -webkit-box-shadow: 0 12px 8px -8px rgba(230, 230, 230, 0.7);
+  -moz-box-shadow: 0 12px 8px -8px rgba(230, 230, 230, 0.7);
+  box-shadow: 0 12px 8px -8px rgba(230, 230, 230, 0.7);
 }
 
 /*

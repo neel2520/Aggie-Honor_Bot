@@ -1,0 +1,16 @@
+extends template
+
+block content
+    .container-fluid.gedf-wrapper
+        .row
+            .col-sm-3
+                h5 
+            .col-md-6
+                h3(style="text-color: white;") #{group}
+                each message, user in {'bob':"hi", "jo":"stop this you animal"}
+                    .row
+                        .col
+                            include components/message
+                            //- +message
+            .col-sm-3
+                h5 
