@@ -75,15 +75,20 @@ app.get("/dashboard", (req, res) => {
                     for (msg of message) {
                         messages.push({"name":msg[0],"text":msg[1]});
                     }
-                    console.log(messages);
+                    res.render("dashboard", {
+                        title: "Dashboard",
+                        groups: groups,
+                        messages: messages
+                    });
                 });
             }
-            console.log(messages);
-            res.render("dashboard", {
-                title: "Dashboard",
-                groups: groups,
-                messages: messages
-            });
+            else{
+                res.render("dashboard", {
+                    title: "Dashboard",
+                    groups: groups,
+                    messages: messages
+                });
+            }
         }
     });
 });
