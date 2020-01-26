@@ -31,17 +31,22 @@ app.get("/dashboard", (req, res) => {
     }
 
     API.Groups.index(req.cookies.access_token, (err,ret) => {
-        var groups = [];
-        for (group of ret) {
-            console.log(group);
-            groups.push({"id": group.id,"name":group.name,"image":group.image_url});
+        if (err){
+            console.log("Error couldn't get groups")
         }
-        console.log(groups);
-        res.render("dashboard", {
-            title: "Dashboard",
-            name: req.cookies.access_token,
-            groups: groups
-        });
+        else{
+            var groups = [];
+            for (group of ret) {
+                console.log(group);
+                groups.push({"id": group.id,"name":group.name,"image":group.image_url});
+            }
+            console.log(groups);
+            res.render("dashboard", {
+                title: "Dashboard",
+                name: req.cookies.access_token,
+                groups: groups
+            });
+        }
     });
 });
 
