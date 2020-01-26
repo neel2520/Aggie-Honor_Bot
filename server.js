@@ -21,24 +21,35 @@ app.get("/", (req, res) => {
 
 app.get("/auth", (req, res) => {
     console.log("Found access token:",req.query.access_token);
-    res.cookie("access_token",req.query.access_token)
+    res.cookie("access_token",req.query.access_token);
     res.redirect("/dashboard");
+})
+
+app.get("/about", (req, res) => {
+    res.render("about");
 })
 
 app.get("/dashboard", (req, res) => {
     if(req.cookies.access_token == null) {
         res.redirect("/");
     }
-
+    
     API.Groups.index(req.cookies.access_token, (err,ret) => {
         if (err){
             console.log("Error couldn't get groups");
         }
         else{
+            var current_group = null;
             var groups = [];
             for (group of ret) {
-                console.log(group);
+                if(group.id === req.query.group) {
+                    current_group = group;
+                    
+                }
                 groups.push({"id": group.id,"name":group.name,"image":group.image_url});
+            }
+            if(current_group){
+                console.log(current_group.messages);
             }
             console.log(groups);
             res.render("dashboard", {
@@ -50,6 +61,6 @@ app.get("/dashboard", (req, res) => {
     });
 });
 
-const server = app.listen(7000, () => {
+const server = app.listen(7000, () => { 
     console.log(`Express running → PORT ${server.address().port}`);
-})
+});
