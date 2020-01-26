@@ -26,7 +26,7 @@ app.get("/auth", (req, res) => {
 })
 
 app.get("/about", (req, res) => {
-    res.render("about");
+    res.render("about", {});
 })
 
 app.get("/dashboard", (req, res) => {
@@ -44,17 +44,15 @@ app.get("/dashboard", (req, res) => {
             for (group of ret) {
                 if(group.id === req.query.group) {
                     current_group = group;
-                    
                 }
                 groups.push({"id": group.id,"name":group.name,"image":group.image_url});
             }
             if(current_group){
-                console.log(current_group.messages);
+                console.log(current_group);
             }
             console.log(groups);
             res.render("dashboard", {
                 title: "Dashboard",
-                name: req.cookies.access_token,
                 groups: groups
             });
         }
