@@ -5,9 +5,10 @@ block content
         .backdrop(style="background-color: #ececec; height: 600px; overflow-y: scroll; border-radius: 1%;")
             .container-fluid
                 .row
-                    .col-md-3(style= "padding:0;")
+                    .col-md-3(style= "padding:0; max-height:100%; overflow-y: scroll; overflow-x: hidden;")
                         each group in groups
                             - var image_url = group.image
+                            - if(!image_url){image_url="https://www.frostclick.com/wp/wp-content/uploads/2015/03/c93763df-07c8-4a8d-83ce-4c8bc0c9c52e.png"}
                             - var group_name = group.name
                             - var group_id = group.id
                             include components/selectorBox
@@ -30,9 +31,18 @@ block content
                                 API.Members.add(document.cookie.access_token,myId,(err,ret)=>{});
                             }   
                         });
-                    .col-md-9
+                    .col-md-9(style= "padding:20px; max-height:100%; overflow-y: scroll; ")
                         each message in messages
                             - var user = message.name
                             - var text = message.text
+                            - var msg_id = message.id
+                            - console.log(message.id);
                             include components/message
+                        script.
+                            document.getElementById("report0").addEventListener('click', function(e) {
+                                console.log("is this even working?");
+                                if(confirm("Are you sure you want to report this message?")){
+                                    console.log('message reporting');
+                                }
+                            });
                         
