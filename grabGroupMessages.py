@@ -17,6 +17,6 @@ if(flag):
     messages = list(groups[0].messages.list_all())
     for i in range(len(messages)):
         if i == len(messages)-1:
-            print(messages[i].name + '88888' + messages[i].text,end="")
+            print(str(messages[i].name) + '88888' + str(messages[i].text),end="")
         else:
-            print(messages[i].name + '88888' + messages[i].text + '77777',end="")
+            print(str(messages[i].name) + '88888' + str(messages[i].text) + '77777',end="")
