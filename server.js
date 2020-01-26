@@ -4,9 +4,8 @@ var USER_ID = "81946993";
 const express = require('express');
 const cookieParser = require('cookie-parser');
 const app = express();
-const API = require("groupme").Stateless;
 let AUTH_ID = null;
-
+let groupmeapi = require("groupme").Stateless;
 
 app.set("view engine","pug");
 app.use(cookieParser());
@@ -14,9 +13,6 @@ app.use(cookieParser());
 const AUTH_URL = "https://oauth.groupme.com/oauth/authorize?client_id=TEEuXmjuhBrBGqdnegjpNruVkG8LAUaqArVCmQrjSyBIwUWU";
 
 app.get("/", (req, res) => {
-    if(req.cookies.access_token != null){
-        res.redirect("/dashboard");
-    }
     res.render("index", {
         title: "Home Page",
         url: AUTH_URL
