@@ -1,0 +1,20 @@
+extends template
+
+block content
+    .container-fluid.gedf-wrapper(style="width: 85%; margin-left: 7.5%; height: 100%;")
+        .backdrop(style="background-color: #ececec; height: 800px;")
+            .container-fluid
+                .row
+                    .col-md-3(style= "padding:0;")
+                        each group in groups
+                            - var image_url = group.image
+                            - var group_name = group.name
+                            - var group_id = group.id
+                            include components/selectorBox
+                    .col-xs-1(style="background-color: #a7a6a5; height: 100%; width: 50%")
+                    .col-md-8
+                        each message in messages
+                            - var user = message.name
+                            - var text = message.text
+                            include components/message
+                        
