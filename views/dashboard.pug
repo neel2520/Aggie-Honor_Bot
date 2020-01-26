@@ -11,8 +11,23 @@ block content
                             - var group_name = group.name
                             - var group_id = group.id
                             include components/selectorBox
-                    .col-xs-1(style="background-color: #a7a6a5; height: 100%; width: 50%")
-                    .col-md-8
+                    script.
+                        function getUrlVars() {
+                            var vars = {};
+                            var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+                            vars[key] = value;
+                            });
+                            return vars;
+                        }
+                        var group_id = getUrlVars(window.location.href)['group'];
+                        document.getElementById("addbot"+group_id).addEventListener('click', function (e) { 
+                            console.log('addbot'); 
+                            if(confirm('Do you want to continue?')){
+                                console.log('it worked');
+                                
+                            }   
+                        });
+                    .col-md-9
                         each message in messages
                             - var user = message.name
                             - var text = message.text

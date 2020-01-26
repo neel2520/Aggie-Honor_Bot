@@ -8,12 +8,5 @@ a
                     a.col-lg-7.col-md-6.col-md-5(href="dashboard?group="+group_id)
                         h5(style="color: black; text-align: left;")=group_name
                     .col-sm-3.col-sm-3.col-sm-3
-                        button(id="addbot")
+                        button(id="addbot"+group_id)
                             p(style="color: black; font-size: 8pt;") Add bot
-script.
-    document.getElementById("addbot").addEventListener('click', function (e) { 
-        console.log('addbot'); 
-        if (window.confirm('Do you want to continue?')){
-            console.log('it worked');
-        } 
-    });
