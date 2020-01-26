@@ -12,6 +12,14 @@ API.Users.me(ACCESS_TOKEN, (err,ret) => {
     }
   });
 
+API.Messages.create(ACCESS_TOKEN, "57206086", {message:{text:"I'm watching you..."}}, (err,res) => {
+    if (err) {
+        console.log("Message Error!");
+    } else {
+        console.log("Reply Message Sent!");
+    }
+});
+
 var listener = new IStream(ACCESS_TOKEN, USER_ID);
 
 listener.on("connected", function() {
@@ -21,7 +29,9 @@ listener.on("connected", function() {
 //Listener for incoming messages
 listener.on("message", function(msg) {
     if(msg && msg.data && msg.data.subject && msg.data.subject.text) {
-        console.log("Message received:", msg.data.subject.text);
+        dataToDB = {group_id: msg.data.subject.group_id, messageid: msg.data.subject.id, text:msg.data.subject.text};
+        console.log("Message received:", dataToDB.text);
+        console.log(dataToDB);
     }
 });
 

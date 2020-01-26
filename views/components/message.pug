@@ -1,0 +1,18 @@
+.card.gedf-card(style="background-color: #ececec; padding: 1.5%; border-color: gray; margin: 5px;")
+  .card-header
+    .container-fluid
+      br
+      .row
+        .col-sm-2
+          img(width='45' style="border-radius: 50%" src=user_pic alt='')
+        .col-md-8(style="text-align:left;")
+          .h5.m-0=user
+        .col-sm-2
+          i.fa.fa-clock-o=timestamp
+  .card-body(style="padding: 3%;")
+    p.card-text(style="text-align: left;")=text
+    .container-fluid
+      .row
+        .col-lg-10
+        .col-sm-2
+          a.btn.btn-sm.btn-default(style="background-color: gray; font-color: white; object-align:right;") Flag as Cheat

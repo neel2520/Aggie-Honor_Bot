@@ -1,0 +1,21 @@
+extends template
+
+block content
+    .container-fluid.gedf-wrapper(style="width: 85%; margin-left: 7.5%; height: 100%;")
+        .backdrop(style="background-color: #ececec; height: 600px; overflow-y: scroll; border-radius: 1%;")
+            .container-fluid(style="width:90%; margin-left: 5%;")
+                br
+                .row(style="height: 100px;")
+                    -console.log(people);
+                    each person in people
+                        - var person_name=person.name
+                        - var profile_pic=person.pic
+                        - var linkedin=person.linkedin
+                        - var email=person.email
+                        - var github=person.github
+                        .col-md-3(style="padding:0;")    
+                            include components/profile
+                    
+                        
+
+                    
