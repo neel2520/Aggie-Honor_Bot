@@ -5,7 +5,7 @@ const express = require('express');
 const cookieParser = require('cookie-parser');
 const app = express();
 let AUTH_ID = null;
-let groupmeapi = require("groupme").Stateless;
+let API = require("groupme").Stateless;
 
 app.set("view engine","pug");
 app.use(cookieParser());
@@ -32,7 +32,7 @@ app.get("/dashboard", (req, res) => {
 
     API.Groups.index(req.cookies.access_token, (err,ret) => {
         if (err){
-            console.log("Error couldn't get groups")
+            console.log("Error couldn't get groups");
         }
         else{
             var groups = [];
